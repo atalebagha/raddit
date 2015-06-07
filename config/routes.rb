@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'links#index'
+  devise_for :users
   resources :links
 
   # The priority is based upon order of creation: first created -> highest priority.
