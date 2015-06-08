@@ -1,0 +1,15 @@
+
+<%= div_for(@link.comments) do %>
+  <div class="comments_wrapper clearfix">
+    <div class="pull-left">
+      <p class="lead"><%= @body %></p>
+      <p> <small>Submitted <strong> <%= distance_of_time_in_words_to_now(comment.created_at) %> ago</strong> by <%= @user.email %> </small> </p>
+    </div>
+
+    <div class="btn-group pull-right">
+      <% if comment.user == current_user -%>
+        <%= link_to 'Destroy',link_comment , method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-default" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

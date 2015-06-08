@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_link
 
   # GET /comments
   # GET /comments.json
@@ -58,7 +59,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to link_path(@link), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,6 +68,10 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+
+    def set_link
+      @link = Link.find(params[:link_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
